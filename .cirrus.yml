@@ -6,8 +6,8 @@ env:
     DT_PATH: device/$OEM/$DEVICE
     VT_LINK: https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_samsung_crownlte.git
     VT_PATH: vendor/$OEM/$DEVICE
-    KT_LINK: https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sm6250.git
-    PLATFORM: sm6250
+    KT_LINK: https://github.com/PixelExperience-Devices/kernel_samsung_exynos9810.git
+    PLATFORM: exynos9810
     KT_PATH: kernel/$OEM/$PLATFORM
     TARGET: bacon
     EXTRA_CMD: export SKIP_ABI_CHECKS=true
