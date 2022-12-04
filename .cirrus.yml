@@ -1,10 +1,10 @@
 env:
-    MANIFEST: https://github.com/PixelExperience/manifest.git -b twelve
-    DEVICE: miatoll
-    OEM: xiaomi
-    DT_LINK: https://github.com/PixelExperience-Devices/device_xiaomi_miatoll.git
+    MANIFEST: https://github.com/PixelExperience/manifest.git -b thirteen
+    DEVICE: crownlte
+    OEM: samsung
+    DT_LINK: https://github.com/PixelExperience-Devices/device_samsung_crownlte.git
     DT_PATH: device/$OEM/$DEVICE
-    VT_LINK: https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_xiaomi_miatoll.git
+    VT_LINK: https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_samsung_crownlte.git
     VT_PATH: vendor/$OEM/$DEVICE
     KT_LINK: https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sm6250.git
     PLATFORM: sm6250
@@ -18,7 +18,7 @@ task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 240m  
   container:
-      image: ubuntu:20.04
+      image: ubuntu:22.04
       cpu: 8
       memory: 32G
         
@@ -27,14 +27,14 @@ task:
        - apt update
        - apt install sudo
        - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-       - ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+       - ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
        - apt-get install -y tzdata
        - dpkg-reconfigure --frontend noninteractive tzdata
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache clang -y
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - git config --global user.name "Sushrut1101"
-       - git config --global user.email "guptasushrut@gmail.com"
+       - git config --global user.name "Faiz Faadhillah"
+       - git config --global user.email "faiz.faadhillah@gmail.com"
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -66,9 +66,6 @@ task:
       - echo "============================"
       - cd ~/work
       - $EXTRA_CMD
-      - export USE_CCACHE=1
-      - export CCACHE_EXEC=/usr/bin/ccache
-      - ccache -M 50G
       - . build/envsetup.sh
       - lunch "$LUNCH_COMBO"
       - mka -j31 $TARGET
